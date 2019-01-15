@@ -17,4 +17,4 @@ Route::get('/', function () {
 
 Route::get('/ticket', 'TicketsController@GetTickets')->name('ticket');
 Route::get('/getjsonticket', 'TicketsController@ReadJson')->name('readjsonticket');
-Route::get('/teste', 'TicketsController@Priority');
+Route::get('/priority', 'TicketsController@Priority');

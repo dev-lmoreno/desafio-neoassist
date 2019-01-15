@@ -47,32 +47,35 @@
                                 <td>{{$value["DateCreate"]}}</td>
                                 <td>{{$value["DateUpdate"]}}</td>  
                                 <td>{{$value["ticketPriority"][0]}}</td>
-                                <td class="text-center"><button onclick="openTicket('{{$key}}')"
-                                 id ="{{$key}}" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#key{{$key}}"><i class="fas fa-plus"></i></button></td> 
+                                <td class="text-center"><button onclick="openTicket('{{$key}}');"
+                                 id ="{{$key}}" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#key{{$key}}"><i class="fas fa-plus"></i></button></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>  
 
-                <div class="modal fade bd-example-modal-lg" id="#key{{$key}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th id="subject">Subject</th>
-                                            <th id="message">Message</th>
-                                            <th id="datecreate">DateCreate</th>
-                                            <th id="sender">Sender</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="modalTable">
-
-                                    </tbody>
-                                </table>
-                            </div>
+                @foreach ($tickets as $key => $value)
+                <div class="modal fade bd-example-modal-lg" id="key{{$key}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">                        
+                        <div class="modal-content">
+                            <div class="modal-header"><h4>TicketID: {{$value["TicketID"]}}</h4></div>
+                            <table class="mdl-data-table table-bordered table-striped" cellpadding="20" style="margin: 1%;">
+                                <thead>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th>DateCreate</th>
+                                        <th>Sender</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="modalTable{{$key}}">
+                                       
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
+                @endforeach
                              
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
@@ -96,16 +99,14 @@
     } );   
 
     function openTicket(id){
-        //alert(id);
         $.ajax({
             type: "GET",
             url: "{{route('readjsonticket')}}",
             data: {id: id},
             dataType:'JSON', 
             success: function(response){
-                response[id].Interactions.map(function(value,index){ 
-                    console.log(value.Message);
-                    $("#modalTable").append(`
+                response[id].Interactions.map(function(value,index){                     
+                    $("#modalTable"+id).append(`
                         <tr>
                             <td>${value.Subject}</td>
                             <td>${value.Message}</td>

@@ -72,26 +72,17 @@ class TicketsController extends Controller
 				$string = file_get_contents(public_path('json/tickets.json'));
 				$json = json_decode($string, true);
 				$json[$key]["ticketPriority"][] = $ticketPriority;
-				if($json[$key]["ticketPriority"][] = $ticketPriority){
-					echo "já existe essa prioridade";
-				}else{
-					$fp = fopen(public_path('json/tickets.json'), 'w');
-					fwrite($fp, json_encode($json));
-					fclose($fp);					
-				}
+				$fp = fopen(public_path('json/tickets.json'), 'w');
+				fwrite($fp, json_encode($json));
+				fclose($fp);					
 		    } else{
-		        echo "PRIORIDADE NORMAL<br>";
 		        $ticketPriority = 'Normal';
 				$string = file_get_contents(public_path('json/tickets.json'));
 				$json = json_decode($string, true);
 				$json[$key]["ticketPriority"][] = $ticketPriority;
-				if($json[$key]["ticketPriority"][] = $ticketPriority){
-					echo "já existe essa prioridade";
-				}else{
-					$fp = fopen(public_path('json/tickets.json'), 'w');
-					fwrite($fp, json_encode($json));
-					fclose($fp);					
-				}
+				$fp = fopen(public_path('json/tickets.json'), 'w');
+				fwrite($fp, json_encode($json));
+				fclose($fp);								
 		    }
 		}
 	}
