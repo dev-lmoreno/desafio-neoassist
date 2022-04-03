@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -11,10 +13,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/ticket', 'TicketsController@GetTickets')->name('ticket');
+Route::get('/', 'TicketsController@GetTickets')->name('ticket');
 Route::get('/getjsonticket', 'TicketsController@ReadJson')->name('readjsonticket');
-Route::get('/priority', 'TicketsController@Priority');

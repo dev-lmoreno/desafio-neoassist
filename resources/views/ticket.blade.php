@@ -23,7 +23,6 @@
                 <table id="datatable" class="mdl-data-table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Index</th>
                             <th>TicketID</th>
                             <th>CategoryID</th>
                             <th>CustomerID</th>
@@ -38,7 +37,6 @@
                     <tbody>            
                         @foreach ($tickets as $key => $value)
                             <tr class="tickets" id={{$key}}">
-                                <td>{{$key}}</td>
                                 <td>{{$value["TicketID"]}}</td>
                                 <td>{{$value["CategoryID"]}}</td>
                                 <td>{{$value["CustomerID"]}}</td>
