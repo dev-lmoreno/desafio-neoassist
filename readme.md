@@ -1,6 +1,7 @@
 # Sistema de Priorização de Tickets - NeoAssist - Desafio
 
 ### Rodando o projeto
+-   clonar o projeto
 -   composer install
 -   composer update
 -   cp .env.example .env
