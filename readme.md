@@ -28,3 +28,10 @@
 
 #### Observação
 ##### A lógica para classificação dos tickets encontra-se na função Priority do TicketsController.php
+
+### Telas da aplicação
+#### Inicial  
+![image](https://user-images.githubusercontent.com/30474697/161440053-26cb6012-388f-4818-9d3e-61a18551509d.png)
+
+#### Detalhes do Ticket  
+![image](https://user-images.githubusercontent.com/30474697/161440026-13d3fd31-ee01-4bef-b8ee-b2fe457454c2.png)
